@@ -4,6 +4,9 @@ import io
 from Localization import Localization
 from model_wrapper import ModelWrapper
 
+st.set_page_config(page_title="Brain Tumor Detector",
+                    page_icon="title_icon.jpg")
+
 if "current_lang" not in st.session_state:
   st.session_state["current_lang"] = "en"
 
