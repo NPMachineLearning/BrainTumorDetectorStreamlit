@@ -33,6 +33,7 @@ titl_image = titl_image.resize((60,60))
 st.image(titl_image)
 
 st.title(localizer.localize("title"))
+st.markdown(localizer.localize("desc"))
 
 st.selectbox(localizer.localize("select_language"), 
               list(lang_code_map.values()), 

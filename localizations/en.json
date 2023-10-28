@@ -4,6 +4,7 @@
   },
   "data": {
     "title": "Brain Tumor Detector",
+    "desc": "To detect whether a patient have brain tumor or not. In addition to classify 3 type of tumor **:red[Glioma]**, **:red[Meningioma]**, **:red[Pituitary]**",
     "select_language": "Language",
     "select_mri_image": "Select MRI image",
     "detect": "Detect",
