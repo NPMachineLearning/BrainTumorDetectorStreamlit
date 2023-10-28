@@ -25,6 +25,7 @@ machine.
    - opencv_python_headless
    - tensorflow
 
-**Note**: 1. We must use [opencv-python-headless](https://pypi.org/project/opencv-python-headless/) package instead of [opencv-python](https://pypi.org/project/opencv-python/) when deploy to streamlit otherwise an error will appear when app start `Importerror: libgl.so.1: cannot open shared object file: no such file or directory opencv error`. Same error was discussed [here](https://discuss.streamlit.io/t/streamlit-sharing-importerror-libgl-so-1-cannot-open-shared-object-file-no-such-file-or-directory-opencv-error/12367)
+**Note**:
 
-    2. Python 3.9 is recommend
+1. We must use [opencv-python-headless](https://pypi.org/project/opencv-python-headless/) package instead of [opencv-python](https://pypi.org/project/opencv-python/) when deploy to streamlit otherwise an error will appear when app start `Importerror: libgl.so.1: cannot open shared object file: no such file or directory opencv error`. Same error was discussed [here](https://discuss.streamlit.io/t/streamlit-sharing-importerror-libgl-so-1-cannot-open-shared-object-file-no-such-file-or-directory-opencv-error/12367)
+2. Python 3.9 is recommend

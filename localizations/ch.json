@@ -1,0 +1,15 @@
+{
+  "metadata": {
+    "name": "中文"
+  },
+  "data": {
+    "title": "人腦腫瘤偵測",
+    "select_language": "語言",
+    "select_mri_image": "選擇MRI圖片",
+    "detect": "偵測",
+    "glioma": "膠質細胞瘤",
+    "meningioma": "腦膜瘤",
+    "notumor": "正常",
+    "pituitary": "垂體瘤"
+  }
+}

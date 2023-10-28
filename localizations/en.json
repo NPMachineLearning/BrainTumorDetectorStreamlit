@@ -1,0 +1,15 @@
+{
+  "metadata": {
+    "name": "English"
+  },
+  "data": {
+    "title": "Brain Tumor Detector",
+    "select_language": "Language",
+    "select_mri_image": "Select MRI image",
+    "detect": "Detect",
+    "glioma": "Glioma tumor",
+    "meningioma": "Meningioma tumor",
+    "notumor": "No tumor",
+    "pituitary": "Pituitary tumor"
+  }
+}
