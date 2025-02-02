@@ -4,17 +4,29 @@ import os
 
 class Localization():
     def __init__(self, root_dir, default_lang):
+        '''
+        Localization object
+
+        Args:
+        - root_dir: path to root directory that contain localication json files
+        e.g en.json, ch.json
+        - default_lang: default language to use
+
+        Return:
+        Localization object
+        '''
         self.root = root_dir
         self.locals = self.get_locals(self.root)
         self.current_lang = None
         self.change_language(default_lang)
 
-    def get_locals(self, directory):
-        paths = glob.glob(os.path.join(self.root, "*.json"))
+    def get_locals(self, root_dir):
+        paths = glob.glob(os.path.join(root_dir, "*.json"))
+
         locals = []
         for p in paths:
             lang_code = os.path.basename(p).split(".")[0]
-            with open(p, "r") as f:
+            with open(p, encoding="utf8") as f:
                 json_data = json.load(f)
                 name = json_data["metadata"]["name"]
             locals.append({"name": name, 
@@ -51,7 +63,7 @@ class Localization():
         if len(found_locals) == 0:
             raise ValueError(f"lanage code {lang_code} not exists, there is no such localization file {lang_code}.json")
         
-        with open(found_locals[0]["path"], "r") as f:
+        with open(found_locals[0]["path"], encoding="utf8") as f:
             return json.load(f)
     
     def localize(self, key):
