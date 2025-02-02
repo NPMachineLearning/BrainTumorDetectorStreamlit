@@ -9,7 +9,7 @@ machine.
 1. Open terminal and cd to this directory
 2. Create python environment `python -m venv .\`
 3. Activate environment `venv\scripts\activate`
-4. Install dependencies `pip install tensorflow streamlit opencv-python-headless imutils pipreqs`
+4. Install dependencies `pip install tensorflow-cpu==2.12.0 streamlit opencv-python-headless imutils pipreqs`
 5. Start streamlit `streamlit run tumor_detector_app.py`
 
 ## Deploy to streamlit
@@ -17,13 +17,13 @@ machine.
 1. Open terminal and cd to this directory
 2. Create python environment `python -m venv .\` if not
 3. Activate environment `venv\scripts\activate`
-4. Install dependencies `pip install tensorflow streamlit opencv-python imutils pipreqs`
+4. Install dependencies `pip install tensorflow-cpu==2.12.0 streamlit opencv-python imutils pipreqs`
 5. Make sure streamlit app is working `streamlit run tumor_detector_app.py`
 6. Ouput **requirements.txt** `pipreqs .\`
-7. Modify **requirements.txt**, remove any packages except following:
+7. Modify **requirements.txt**, remove any packages except following(don't modify their version):
    - imutils
    - opencv_python_headless
-   - tensorflow
+   - tensorflow_cpu
 
 **Note**:
 
