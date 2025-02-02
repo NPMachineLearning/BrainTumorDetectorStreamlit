@@ -3,6 +3,7 @@ from PIL import Image
 import io
 from Localization import Localization
 from model_wrapper import ModelWrapper
+from model_wrapper import STProgressBar
 
 st.set_page_config(page_title="Brain Tumor Detector",
                     page_icon="title_icon.jpg")
@@ -15,7 +16,9 @@ def on_lang_change():
 
 @st.cache_resource
 def load_wrapper():
-  wrapper = ModelWrapper("brain_tumor_detector.h5", "id_to_class.txt")
+  model_url = "https://storage.googleapis.com/np-machine-learning-models/tf2/gan/brain_tumor_detector.h5"
+  pb = STProgressBar("Downloading model please wait ...!!")
+  wrapper = ModelWrapper(model_url, "id_to_class.txt", pb, download_complete=lambda : st.rerun())
   return wrapper
 
 def load_localization():

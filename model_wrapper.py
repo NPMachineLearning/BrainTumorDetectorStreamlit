@@ -2,9 +2,27 @@
 import tensorflow as tf
 import cv2
 import imutils
+import streamlit as st
+import numpy as np
+import os
+import urllib.request
+
+class STProgressBar():
+  def __init__(self, text=""):
+    self.text = text
+    self.progressbar = None
+  def __call__(self, block_num, block_size, total_size):
+    progress = block_num * block_size / total_size
+    progress = np.clip(progress, 0.0, 1.0)
+    if self.progressbar is None:
+      self.progressbar = st.progress(value=0.0, text=self.text)
+    if self.progressbar:
+      self.progressbar.progress(value=progress, text=self.text)
+
+FILE_PATH = "./detector_model.h5"
 
 class ModelWrapper:
-  def __init__(self, model_path, id_to_cls_path):
+  def __init__(self, model_url, id_to_cls_path, download_progress:STProgressBar=None, download_complete=None):
     self.image_size = (256,256)
     self.id_to_cls_map = self.load_id_to_class(id_to_cls_path)
     self.en_local = {"glioma": "Glioma tumor",
@@ -15,7 +33,17 @@ class ModelWrapper:
                     "meningioma": "腦膜瘤",
                     "notumor": "正常",
                     "pituitary": "垂體瘤"}
-    self.model = tf.keras.models.load_model(model_path,
+    
+    if not os.path.exists(FILE_PATH):
+      if download_progress is not None:
+        urllib.request.urlretrieve(model_url, FILE_PATH, 
+                                  reporthook=download_progress)
+      else:
+        urllib.request.urlretrieve(model_url, FILE_PATH)
+      if download_complete is not None:
+        download_complete()
+
+    self.model = tf.keras.models.load_model(FILE_PATH,
                                            compile=False)
   
   def predict(self, img_tensor):
